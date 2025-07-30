@@ -23,7 +23,7 @@ android {
         minSdk = 31
         targetSdk = 35
         versionCode = 1
-        versionName = "0.1.2"
+        versionName = "0.1.3"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         
@@ -54,7 +54,7 @@ android {
     // 添加splits配置，用于分别打包64位和32位APK
     splits {
         abi {
-//            isEnable = true
+            isEnable = false        // 分包
             isUniversalApk = false  // 成通用APK
             include("armeabi-v7a", "arm64-v8a")  // 只包含32位和64位ARM架构
         }
@@ -72,10 +72,10 @@ android {
 dependencies {
     implementation(libs.appcompat)
     implementation(libs.material)
-    compileOnly(files("lib/XposedAPI-89.jar"))
     implementation(libs.constraintlayout)
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
+    compileOnly(files("libs/XposedAPI-89.jar"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
